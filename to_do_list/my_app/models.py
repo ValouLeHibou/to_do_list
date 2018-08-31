@@ -31,23 +31,23 @@ class Task(models.Model):
 			# Le nouvel emplacement est donc plus haut dans la liste
 			all = Task.objects.all().order_by('place')
 			for task in all:
-				if task.order == old_place:
-					# Si task.order est égale à l'ancienne place,
+				if task.place == old_place:
+					# Si task.place est égale à l'ancienne place,
 					# cela veux dire que nous sommes sur la tâche à déplacer :
-					task.order = new_place
+					task.place = new_place
 					return true
-				task.order = task.order + 1
+				task.place = task.place + 1
 				# on augmente la valeur d'une tache et on la fait donc baisser dans la liste
 		if old_place < new_place:
 			all = Task.objects.all().order_by('place')
 			# "-" pour inverser l'ordre pour faire la même chose que précédement mais dans l'autre sens
 			# Le nouvel emplacement est donc plus bas dans la liste
 			for task in all:
-				if task.order == old_place:
+				if task.place == old_place:
 					# même chose ici
-					task.order = new_place
+					task.place = new_place
 					return true
-				task.order = task.order - 1
+				task.place = task.place - 1
 				# on baisse la valeur d'une tache et on la fait donc monter dans la liste
 		if old_place == new_place:
 			return true
