@@ -39,7 +39,7 @@ class Task(models.Model):
 				task.place = task.place + 1
 				# on augmente la valeur d'une tache et on la fait donc baisser dans la liste
 		if old_place < new_place:
-			all = Task.objects.all().order_by('place')
+			all = Task.objects.all().order_by('-place')
 			# "-" pour inverser l'ordre pour faire la même chose que précédement mais dans l'autre sens
 			# Le nouvel emplacement est donc plus bas dans la liste
 			for task in all:
